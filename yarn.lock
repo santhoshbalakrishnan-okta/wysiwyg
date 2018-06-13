@@ -2953,7 +2953,7 @@ handlebars@4.0.5:
   optionalDependencies:
     uglify-js "^2.6"
 
-handlebars@^4.0.1, handlebars@^4.0.3:
+handlebars@^4.0.1, handlebars@^4.0.11, handlebars@^4.0.3:
   version "4.0.11"
   resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/handlebars/-/handlebars-4.0.11.tgz#630a35dfe0294bc281edae6ffc5d329fc7982dcc"
   dependencies:

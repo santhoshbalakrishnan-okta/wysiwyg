@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as OktaSignIn from '@okta/okta-signin-widget';
+import WidgetService from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   widget: OktaSignIn;
 
-  constructor() {
+  constructor(private widgetService: WidgetService) {
     this.widget = new OktaSignIn({
       baseUrl: 'https://atko.oktapreview.com',
       clientId: '{clientId}',
@@ -38,5 +39,9 @@ export class AppComponent implements OnInit {
               console.log(error.message, error);
             }
         );
+  }
+
+  downloadCode() {
+    this.widgetService.downloadPage();
   }
 }
