@@ -10,6 +10,8 @@ import WidgetService from './app.service';
 export class AppComponent implements OnInit {
   title = 'app';
   widget: OktaSignIn;
+  fontColor: any = 'default';
+  bgColor: any = 'default';
 
   constructor(private widgetService: WidgetService) {
     this.widget = new OktaSignIn({

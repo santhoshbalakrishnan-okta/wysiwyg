@@ -61,3 +61,11 @@ input[type=text]:hover, input[type=text]:active, input[type=text]:focus, input[t
     background: #282935;
     color: #ffffff;
 }
+
+.color-picker {
+    background-color: #383A4B !important;
+}
+
+.color-picker .hex-text .box div {
+    color: #fff !important;
+}
