@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Karla');
+@import '~@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+@import '~@okta/okta-signin-widget/dist/css/okta-theme.css';
+
+* {
+    font-family: 'Karla', Arial, Helvetica, sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, #4E506B 0%, #414257 100%);
+    /* background: #54566F; */
+    color: #ffffff;
+}
+.btn.btn-outline-primary {
+    border-width: 2px;
+    border-color: #27C78B;
+    color: #27C78B;
+}
+
+.btn.btn-primary {
+    border-width: 2px;
+    border-color: #e22866;
+    background: #e22866;
+    color: #ffffff;
+}
+
+.card {
+    background-image: -webkit-linear-gradient(top left, #333446 0%, #393B4E 100%);
+    /* background-image: -webkit-linear-gradient(top left, #333446 0%, #393B4E 100%); */
+    border-color: #333446;
+    border-radius: 5px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+.card-title {
+    color: #e22866;
+} 
+
+.btn .material-icons {
+    vertical-align: bottom;
+}

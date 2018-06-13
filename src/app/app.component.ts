@@ -1,10 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as OktaSignIn from '@okta/okta-signin-widget';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+  widget: OktaSignIn;
+
+  constructor() {
+    this.widget = new OktaSignIn({
+      baseUrl: 'https://atko.oktapreview.com',
+      clientId: '{clientId}',
+      redirectUri: 'http://localhost:4200',
+      authParams: {
+        issuer: 'default'
+      }
+    });
+  }
+
+  ngOnInit() {
+    var orgUrl = "https://bsanth.oktapreview.com";
+        
+		// config
+        var config = {
+        	baseUrl: orgUrl
+        };
+
+				// render widget
+        this.widget.renderEl({ el: '#okta-login-container' },
+            function(res) {
+            },
+            function(error) {
+		          // failure fn
+              console.log(error.message, error);
+            }
+        );
+  }
 }
