@@ -32,6 +32,12 @@
     overflow: auto;
 }
 
+.left-col {
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
 .main {
     padding: 15px;
     height: calc(100% - 80px);
