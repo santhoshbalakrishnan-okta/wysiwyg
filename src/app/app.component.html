@@ -18,38 +18,105 @@
 
 <div class="main">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row row-100">
         <div class="col left-col">
             <button type="button" class="btn btn-primary btn-block mb-4">
                 <i class="material-icons">center_focus_weak</i>
                 Select Element
             </button>
-            <h5>Components</h5>
+            <h6>Components</h6>
             <ul class="list-group mb-4 components">
               <li class="list-group-item">Logo</li>
               <li class="list-group-item">Button</li>
               <li class="list-group-item">Help Link</li>
             </ul>
-            <h5>Features</h5>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-text">Router</h5>
-              </div>
-            </div>
+            <h6>Features</h6>
+            <ul class="list-group mb-4 components">
+                <li class="list-group-item">Router <ui-switch></ui-switch></li>
+                <li class="list-group-item">Remember Me <ui-switch></ui-switch></li>
+                <li class="list-group-item">Registration <ui-switch></ui-switch></li>
+              </ul>
         </div>
       <div class="col-6">
         <div id="okta-login-container"></div>
       </div>
       <div class="col section">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text" placeholder="Default text">
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <div class="form-group mt-4">
+            <label for="font-size">Font size</label>
+            <input type="text" class="form-control" id="font-size" placeholder="#">
           </div>
-          
+          <h6 class="mt-4">Height Properties</h6>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="height" class="text-muted">Height</label>
+              <input type="text" class="form-control" id="height" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="min-height" class="text-muted">Min Height</label>
+              <input type="text" class="form-control" id="min-height" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="max-height" class="text-muted">Max Height</label>
+              <input type="text" class="form-control" id="max-height" placeholder="px or %">
+            </div>
+          </div>
+          <h6 class="mt-3">Width Properties</h6>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="width" class="text-muted">Width</label>
+              <input type="text" class="form-control" id="width" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="min-width" class="text-muted">Min Width</label>
+              <input type="text" class="form-control" id="min-width" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="max-width" class="text-muted">Max Width</label>
+              <input type="text" class="form-control" id="max-width" placeholder="px or %">
+            </div>
+          </div>
+          <h6 class="mt-3">Margin Properties</h6>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="margin-top" class="text-muted">Top</label>
+              <input type="text" class="form-control" id="margin-top" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="margin-right" class="text-muted">Right</label>
+              <input type="text" class="form-control" id="margin-right" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="margin-bottom" class="text-muted">Bottom</label>
+              <input type="text" class="form-control" id="margin-bottom" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="margin-left" class="text-muted">Left</label>
+                <input type="text" class="form-control" id="margin-left" placeholder="px or %">
+              </div>
+          </div>
+          <h6 class="mt-3">Border Properties</h6>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="border-top" class="text-muted">Top</label>
+              <input type="text" class="form-control" id="border-top" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="border-right" class="text-muted">Right</label>
+              <input type="text" class="form-control" id="border-right" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="border-bottom" class="text-muted">Bottom</label>
+              <input type="text" class="form-control" id="border-bottom" placeholder="px or %">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="border-left" class="text-muted">Left</label>
+                <input type="text" class="form-control" id="border-left" placeholder="px or %">
+              </div>
+          </div>
       </div>
     </div>
   </div>
