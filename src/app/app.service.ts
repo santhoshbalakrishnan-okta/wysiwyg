@@ -11,58 +11,69 @@ export default class WidgetService {
   getCss(cssTrans): void {
   	var cssTranslation = {
 	    authContainer: {
-	      display: null,
+	      display: "flex",
+	      height: null,
+	      width: "700px",
+	      margin: null,
+	      border: null,
+	      background: null,//"green",
+	      color: null,
+	      "font-size": null,
+	      font: null,
+	    },
+	    authHeader: {
+	      display: "none",
 	      height: null,
 	      width: null,
 	      margin: null,
 	      border: null,
-	      background: "green",
+	      background: null,//"purple",
 	      color: null,
 	      "font-size": null,
 	      font: null,
 	    },
 	    authContent: {
-	      display: null,
+	      display: "flex",
 	      height: null,
 	      width: null,
-	      margin: null,
+	      margin: "25px 0 0 0",
 	      border: null,
-	      background: "purple",
+	      background: null,//"purple",
 	      color: null,
-	      fontSize: null,
+	      "font-size": null,
 	      font: null,
 	    },
 	    authContentInner: {
-	      display: null,
+	      display: "flex",
 	      height: null,
 	      width: null,
 	      margin: null,
 	      border: null,
-	      background: "yellow",
+	      background: null,//"yellow",
 	      color: null,
-	      fontSize: null,
+	      "font-size": null,
 	      font: null,
 	    },
 	    primaryAuth: {
-	      display: null,
+	      display: "flex",
 	      height: null,
 	      width: null,
 	      margin: null,
 	      border: null,
-	      background: "pink",
+	      background: null,//"pink",
 	      color: null,
-	      fontSize: null,
+	      "font-size": null,
 	      font: null,
 	    },
 	    primaryAuthForm: {
-	      display: null,
+	      display: "flex",
 	      height: null,
 	      width: null,
 	      margin: null,
 	      border: null,
-	      background: "blue",
+	      background: null,//"blue",
 	      color: null,
-	      fontSize: null,
+	      "font-size": null,
 	      font: null,
 	    },
 	    oFormContent: {
@@ -71,24 +82,46 @@ export default class WidgetService {
 	      width: null,
 	      margin: null,
 	      border: null,
-	      background: "lightblue",
+	      background: null,//"lightblue",
 	      color: null,
-	      fontSize: null,
+	      "font-size": null,
 	      font: null,
 	    },
 	    oFormFieldsetContainer: {
-	      display: null,
+	      display: "flex",
 	      height: null,
 	      width: null,
 	      margin: null,
 	      border: null,
-	      background: "crimson",
+	      background: null,//"crimson",
 	      color: null,
-	      fontSize: null,
+	      "font-size": null,
+	      font: null,
+	    },
+	    authFooter: {
+	      display: "none",
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: null,
+	      color: null,
+	      "font-size": null,
+	      font: null,
+	    },
+	    registrationContainer: {
+	      display: "none",
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: null,
+	      color: null,
+	      "font-size": null,
 	      font: null,
 	    },
 	    signInLabel: {
-	      display: null,
+	      display: "none",
 	      height: null,
 	      width: null,
 	      margin: null,
@@ -101,42 +134,47 @@ export default class WidgetService {
 	    username: {
 	      display: null,
 	      height: null,
-	      width: null,
+	      width: "300px",
 	      margin: null,
 	      border: null,
 	      background: "yellow",
 	      color: "purple",
-	      fontSize: "20px",
-	      font: "bold",
+	      fontSize: null,
+	      font: null,
 	    },
 	    password: {
 	      display: null,
 	      height: null,
-	      width: null,
-	      margin: null,
+	      width: "200px",
+	      margin: "25px 0 0 0",
 	      border: null,
-	      background: "green",
-	      color: "orange",
-	      fontSize: "5px",
-	      font: "600"
+	      background: "yellow",
+	      color: "purple",
+	      fontSize: null,
+	      font: null
 	    },
 	    signInButton: {
 	      display: null,
 	      height: null,
-	      width: null,
+	      width: "200px",
 	      margin: null,
 	      border: null,
 	      background: "green",
 	      color: "orange",
-	      fontSize: "5px",
-	      font: "600"
+	      fontSize: null,
+	      font: null
 	    }
 	  };
 
-		var template = Handlebars.compile('\
+    var template = Handlebars.compile('\
        {{#each authContainer}} \
          {{#if this}} \
            #okta-sign-in.auth-container.main-container[data-se=auth-container] { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each authHeader}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .auth-header { {{@key}}: {{this}}; }\n \
          {{/if}} \
        {{/each}} \
        {{#each authContent}} \
@@ -167,6 +205,16 @@ export default class WidgetService {
        {{#each oFormFieldsetContainer}} \
          {{#if this}} \
            #okta-sign-in.auth-container.main-container .o-form-fieldset-container { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each authFooter}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .auth-footer { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each registrationContainer}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .registration-container { {{@key}}: {{this}}; }\n \
          {{/if}} \
        {{/each}} \
        \
@@ -227,47 +275,47 @@ export default class WidgetService {
        {{/if}} \
        \
        {{#if password.display}} \
-        #okta-sign-in .o-form .o-form-input #okta-signin-password { display: {{password.display}}; }\n \
+        #okta-sign-in .o-form .o-form-input .o-form-input-name-password { display: {{password.display}}; }\n \
        {{/if}} \
        {{#if password.height}} \
-        #okta-sign-in .o-form .o-form-input #okta-signin-password { height: {{height.display}}; }\n \
+        #okta-sign-in .o-form .o-form-input .o-form-input-name-password { height: {{height.display}}; }\n \
        {{/if}} \
        {{#if password.width}} \
-        #okta-sign-in .o-form .o-form-input #okta-signin-password { width: {{password.width}}; }\n \
+        #okta-sign-in .o-form .o-form-input .o-form-input-name-password { width: {{password.width}}; }\n \
        {{/if}} \
        {{#if password.background}} \
-        #okta-sign-in .o-form .o-form-input #okta-signin-password { background: {{password.background}}; }\n \
+        #okta-sign-in .o-form .o-form-input .o-form-input-name-password { background: {{password.background}}; }\n \
        {{/if}} \
        {{#if password.color}} \
-        #okta-sign-in .o-form .o-form-input #okta-signin-password { color: {{password.color}}; }\n \
+        #okta-sign-in .o-form .o-form-input .o-form-input-name-password { color: {{password.color}}; }\n \
        {{/if}} \
        {{#if password.fontSize}} \
-        #okta-sign-in .o-form .o-form-input #okta-signin-password { font-size: {{password.fontSize}}; }\n \
+        #okta-sign-in .o-form .o-form-input .o-form-input-name-password { font-size: {{password.fontSize}}; }\n \
        {{/if}} \
        {{#if password.font}} \
-        #okta-sign-in .o-form .o-form-input #okta-signin-password { font: {{password.font}}; }\n \
+        #okta-sign-in .o-form .o-form-input .o-form-input-name-password { font: {{password.font}}; }\n \
        {{/if}} \
        \
        {{#if signInButton.display}} \
-        #okta-sign-in.auth-container #okta-signin-submit { display: {{signInButton.display}}; }\n \
+        #okta-sign-in.auth-container .o-form-input-name-username { display: {{signInButton.display}}; }\n \
        {{/if}} \
        {{#if signInButton.height}} \
-        #okta-sign-in.auth-container #okta-signin-submit { height: {{signInButton.height}}; }\n \
+        #okta-sign-in.auth-container .o-form-input-name-username { height: {{signInButton.height}}; }\n \
        {{/if}} \
        {{#if signInButton.width}} \
-        #okta-sign-in.auth-container #okta-signin-submit { width: {{signInButton.width}}; }\n \
+        #okta-sign-in.auth-container .o-form-input-name-username { width: {{signInButton.width}}; }\n \
        {{/if}} \
        {{#if signInButton.background}} \
-        #okta-sign-in.auth-container #okta-signin-submit { background: {{signInButton.background}}; }\n \
+        #okta-sign-in.auth-container .o-form-input-name-username { background: {{signInButton.background}}; }\n \
        {{/if}} \
        {{#if signInButton.color}} \
-        #okta-sign-in.auth-container #okta-signin-submit { color: {{signInButton.color}}; }\n \
+        #okta-sign-in.auth-container .o-form-input-name-username { color: {{signInButton.color}}; }\n \
        {{/if}} \
        {{#if signInButton.fontSize}} \
-        #okta-sign-in.auth-container #okta-signin-submit { font-size: {{signInButton.fontSize}}; }\n \
+        #okta-sign-in.auth-container .o-form-input-name-username { font-size: {{signInButton.fontSize}}; }\n \
        {{/if}} \
        {{#if signInButton.font}} \
-        #okta-sign-in.auth-container #okta-signin-submit { font: {{signInButton.font}}; }\n \
+        #okta-sign-in.auth-container .o-form-input-name-username { font: {{signInButton.font}}; }\n \
        {{/if}} \
       ');
     return template(cssTrans || cssTranslation);

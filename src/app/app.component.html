@@ -64,7 +64,7 @@
           </div>
           <div class="form-group mt-4">
               <label for="background">Background</label>
-              <input type="text" class="form-control" id="background" [(colorPicker)]="bgColor" [cpPosition]="'bottom'" [value]="bgColor"/>
+              <input type="text" class="form-control" id="background" [(colorPicker)]="model.background" [cpPosition]="'bottom'" [value]="model.background" (keyup.enter)="getStyles()"/>
             </div>
           <h6 class="mt-4">Height Properties</h6>
           <div class="row">

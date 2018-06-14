@@ -87,20 +87,21 @@ export class AppComponent implements OnInit {
 
     if (component) {
       var componentConfig = this.config[componentConfig];
-    if (this.config[component]) {
-      this.model.component = component;
-      this.model.fontSize = componentConfig["font-size"];
-      this.model.height = componentConfig.height;
-      this.model.width = componentConfig.width;
-      this.model.color = componentConfig.color;
-      this.model.background = componentConfig.background;
-    } else {
-      this.model.component = component;
-      this.model.fontSize = null;
-      this.model.height = null;
-      this.model.width = null;
-      this.model.color = null;
-      this.model.background = null;
+      if (this.config[component]) {
+        this.model.component = component;
+        this.model.fontSize = componentConfig["font-size"];
+        this.model.height = componentConfig.height;
+        this.model.width = componentConfig.width;
+        this.model.color = componentConfig.color;
+        this.model.background = componentConfig.background;
+      } else {
+        this.model.component = component;
+        this.model.fontSize = null;
+        this.model.height = null;
+        this.model.width = null;
+        this.model.color = null;
+        this.model.background = null;
+      }
     }
   }
 }
