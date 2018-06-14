@@ -54,11 +54,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.config = this.templateService.getTemplate(this.templateName);
-    this.features = this.templateService.getFeatures(this.templateName);
     this.changeComponent('username');
     this.createAndRenderNewWideget();
-    this.getStyles();
   }
 
   createAndRenderNewWideget() {
@@ -188,9 +185,14 @@ export class AppComponent implements OnInit {
     this.hideChooseTemplateModal = false;
   }
 
-  startEditing() {
+  startEditing(templateName) {
+    this.templateName = templateName;
+    this.config = this.templateService.getTemplate(this.templateName);
+    this.features = this.templateService.getFeatures(this.templateName);
     this.hideUrlModal = true;
     this.hideChooseTemplateModal = true;
+    this.updateConfigAndRenderWidgetAgain(null, null);
+    this.getStyles();
   }
 
   getStyles() {

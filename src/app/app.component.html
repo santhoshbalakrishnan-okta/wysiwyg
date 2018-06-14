@@ -153,25 +153,25 @@
     <span class="header-ext text-white">Sign-In Widget Editor</span>
     <div class="templates">
         <div class="card-deck">
-          <div class="card">
+          <div class="card" (click)="startEditing('lightTheme')">
             <img class="card-img-top" src="../assets/img/default.png" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Light Theme (Default)</h5>
             </div>
           </div>
-          <div class="card">
+          <div class="card" (click)="startEditing('lightTheme')">
             <img class="card-img-top" src="../assets/img/default.png" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Dark Theme</h5>
             </div>
           </div>
-          <div class="card">
+          <div class="card" (click)="startEditing('horizontal')">
             <img class="card-img-top" src="../assets/img/default.png" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Horizontal</h5>
             </div>
           </div>
-          <div class="card">
+          <div class="card" (click)="startEditing('lightTheme')">
               <img class="card-img-top" src="../assets/img/default.png" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Horizontal</h5>
@@ -179,7 +179,7 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary mb-4 modal-button modal-template-button" (click)="startEditing()">
+    <!-- <button type="button" class="btn btn-primary mb-4 modal-button modal-template-button" (click)="startEditing()">
         Start Editing!
-    </button>
+    </button> -->
   </div>
