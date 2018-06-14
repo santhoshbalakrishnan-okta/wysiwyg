@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import WidgetService from './app.service';
+import TemplateService from './templates';
 import { CssConfig }    from './css-config';
 import $ from 'jquery';
 
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
 
   title = 'app';
   widget: OktaSignIn;
+  templateName: string;
   fontColor: any = 'default';
   bgColor: any = 'default';
   hideUrlModal: boolean = false;
@@ -48,10 +50,12 @@ export class AppComponent implements OnInit {
   selectableElementsSelectors: any = {};
   selectMode: boolean = false;
 
-  constructor(private widgetService: WidgetService) {
+  constructor(private widgetService: WidgetService, private templateService:TemplateService) {
   }
 
   ngOnInit() {
+    this.config = this.templateService.getTemplate(this.templateName);
+    this.features = this.templateService.getFeatures(this.templateName);
     this.changeComponent('username');
     this.createAndRenderNewWideget();
     this.getStyles();
