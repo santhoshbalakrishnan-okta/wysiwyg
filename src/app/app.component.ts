@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   widget: OktaSignIn;
   fontColor: any = 'default';
   bgColor: any = 'default';
+  hideUrlModal: boolean = false;
+  hideChooseTemplateModal: boolean = true;
 
   constructor(private widgetService: WidgetService) {
     this.widget = new OktaSignIn({
@@ -45,5 +47,15 @@ export class AppComponent implements OnInit {
 
   downloadCode() {
     this.widgetService.downloadPage();
+  }
+
+  showChooseTemplateModal() {
+    this.hideUrlModal = true;
+    this.hideChooseTemplateModal = false;
+  }
+
+  startEditing() {
+    this.hideUrlModal = true;
+    this.hideChooseTemplateModal = true;
   }
 }
