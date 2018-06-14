@@ -18,8 +18,12 @@ export class AppComponent implements OnInit {
   hideUrlModal: boolean = false;
   hideChooseTemplateModal: boolean = true;
   config = {};
+  features = {};
+  i18n = {
+    username: 'Username'
+  };
 
-  model = new CssConfig("authContainer", null, null, null, null, null, null, null, null, null);
+  model = new CssConfig("username", null, null, null, null, null, null, null, null, null);
 
   constructor(private widgetService: WidgetService) {
     this.widget = new OktaSignIn({
@@ -49,7 +53,40 @@ export class AppComponent implements OnInit {
         console.log(error.message, error);
       }
     );
-    this.getStyles();
+  }
+
+  updateConfigAndRenderWidgetAgain(feature, value) {
+    if (feature) {
+      this.features[feature] = value;  
+    }
+    
+    //$('#okta-login-container').empty();
+    this.widget.remove();
+    this.widget = new OktaSignIn({
+      baseUrl: 'https://atko.oktapreview.com',
+      clientId: '{clientId}',
+      redirectUri: 'http://localhost:4200',
+      authParams: {
+        issuer: 'default'
+      },
+      features: this.features,
+      i18n: {
+        en: {
+          'primaryauth.username.placeholder': this.i18n.username
+        }
+      }
+    });
+
+
+    // render widget
+    this.widget.renderEl({ el: '#okta-login-container' },
+      function(res) {
+      },
+      function(error) {
+        // failure fn
+        console.log(error.message, error);
+      }
+    );
   }
 
   downloadCode() {

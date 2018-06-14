@@ -32,8 +32,8 @@
             </ul>
             <h6>Features</h6>
             <ul class="list-group mb-4 components">
-                <li class="list-group-item">Router <ui-switch></ui-switch></li>
-                <li class="list-group-item">Remember Me <ui-switch checked></ui-switch></li>
+                <li class="list-group-item">Router <ui-switch features.router></ui-switch></li>
+                <li class="list-group-item">Remember Me <ui-switch checked (change)="updateConfigAndRenderWidgetAgain('rememberMe', $event)"></ui-switch></li>
                 <li class="list-group-item">Auto Push <ui-switch></ui-switch></li>
                 <li class="list-group-item">SMS Recovery <ui-switch></ui-switch></li>
                 <li class="list-group-item">Call Recovery <ui-switch></ui-switch></li>
@@ -41,7 +41,7 @@
                 <li class="list-group-item">Self-service Unlock <ui-switch></ui-switch></li>
                 <li class="list-group-item">Multiple Optional Factor Enroll <ui-switch></ui-switch></li>
                 <li class="list-group-item">Hide Sign Out Link In MFA Page<ui-switch></ui-switch></li>
-                <li class="list-group-item">Registration <ui-switch></ui-switch></li>
+                <li class="list-group-item">Registration <ui-switch (change)="updateConfigAndRenderWidgetAgain('registration', $event)"></ui-switch></li>
                 <li class="list-group-item">IDP Discovery <ui-switch></ui-switch></li>
               </ul>
         </div>
@@ -51,7 +51,7 @@
       <div class="col section">
           <div class="form-group">
             <label for="text">Text</label>
-            <input type="text" class="form-control" id="text" placeholder="Default text">
+            <input type="text" class="form-control" id="text" placeholder="Default text" [(ngModel)]="i18n[model.component]" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
           </div>
           <div class="form-group mt-4">
             <label for="font-size">Font size</label>
@@ -60,7 +60,7 @@
           </div>
           <div class="form-group mt-4">
             <label for="font-color">Font color</label>
-            <input type="text" class="form-control" id="font-color" [(colorPicker)]="fontColor" [cpPosition]="'bottom'" [value]="fontColor"/>
+            <input type="text" class="form-control" id="font-color" [(colorPicker)]="model.color" [cpPosition]="'bottom'" [value]="model.color"/>
           </div>
           <div class="form-group mt-4">
               <label for="background">Background</label>
