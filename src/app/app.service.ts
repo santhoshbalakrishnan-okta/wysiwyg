@@ -8,40 +8,275 @@ export default class WidgetService {
 
   constructor() { }
 
+  getCss(cssTrans): void {
+  	var cssTranslation = {
+	    authContainer: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "green",
+	      color: null,
+	      "font-size": null,
+	      font: null,
+	    },
+	    authContent: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "purple",
+	      color: null,
+	      fontSize: null,
+	      font: null,
+	    },
+	    authContentInner: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "yellow",
+	      color: null,
+	      fontSize: null,
+	      font: null,
+	    },
+	    primaryAuth: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "pink",
+	      color: null,
+	      fontSize: null,
+	      font: null,
+	    },
+	    primaryAuthForm: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "blue",
+	      color: null,
+	      fontSize: null,
+	      font: null,
+	    },
+	    oFormContent: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "lightblue",
+	      color: null,
+	      fontSize: null,
+	      font: null,
+	    },
+	    oFormFieldsetContainer: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "crimson",
+	      color: null,
+	      fontSize: null,
+	      font: null,
+	    },
+	    signInLabel: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "yellow",
+	      color: "purple",
+	      fontSize: "20px",
+	      font: "bold",
+	    },
+	    username: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "yellow",
+	      color: "purple",
+	      fontSize: "20px",
+	      font: "bold",
+	    },
+	    password: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "green",
+	      color: "orange",
+	      fontSize: "5px",
+	      font: "600"
+	    },
+	    signInButton: {
+	      display: null,
+	      height: null,
+	      width: null,
+	      margin: null,
+	      border: null,
+	      background: "green",
+	      color: "orange",
+	      fontSize: "5px",
+	      font: "600"
+	    }
+	  };
+
+		var template = Handlebars.compile('\
+       {{#each authContainer}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container[data-se=auth-container] { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each authContent}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .auth-content { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each authContentInner}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .auth-content-inner { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each primaryAuth}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .primary-auth { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each primaryAuthForm}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .primary-auth-form { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each oFormContent}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .o-form-content { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       {{#each oFormFieldsetContainer}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .o-form-fieldset-container { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
+       \
+       {{#if signInLabel.display}} \
+        #okta-sign-in.auth-container .o-form-head { display: {{signInLabel.display}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.height}} \
+        #okta-sign-in.auth-container .o-form-head { height: {{signInLabel.height}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.width}} \
+        #okta-sign-in.auth-container .o-form-head { width: {{signInLabel.width}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.width}} \
+        #okta-sign-in.auth-container .o-form-head { width: {{signInLabel.width}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.width}} \
+        #okta-sign-in.auth-container .o-form-head { width: {{signInLabel.width}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.background}} \
+        #okta-sign-in.auth-container .o-form-head { background: {{signInLabel.background}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.color}} \
+        #okta-sign-in.auth-container .o-form-head { color: {{signInLabel.color}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.fontSize}} \
+        #okta-sign-in.auth-container .o-form-head { font-size: {{signInLabel.fontSize}}; }\n \
+       {{/if}} \
+       {{#if signInLabel.font}} \
+        #okta-sign-in.auth-container .o-form-head { font: {{signInLabel.font}}; }\n \
+       {{/if}} \
+       \
+       {{#if username.display}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { display: {{username.display}}; }\n \
+       {{/if}} \
+       {{#if username.height}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { height: {{username.height}}; }\n \
+       {{/if}} \
+       {{#if username.width}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { width: {{username.width}}; }\n \
+       {{/if}} \
+       {{#if username.width}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { width: {{username.width}}; }\n \
+       {{/if}} \
+       {{#if username.width}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { width: {{username.width}}; }\n \
+       {{/if}} \
+       {{#if username.background}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { background: {{username.background}}; }\n \
+       {{/if}} \
+       {{#if username.color}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { color: {{username.color}}; }\n \
+       {{/if}} \
+       {{#if username.fontSize}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { font-size: {{username.fontSize}}; }\n \
+       {{/if}} \
+       {{#if username.font}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { font: {{username.font}}; }\n \
+       {{/if}} \
+       \
+       {{#if password.display}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-password { display: {{password.display}}; }\n \
+       {{/if}} \
+       {{#if password.height}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-password { height: {{height.display}}; }\n \
+       {{/if}} \
+       {{#if password.width}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-password { width: {{password.width}}; }\n \
+       {{/if}} \
+       {{#if password.background}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-password { background: {{password.background}}; }\n \
+       {{/if}} \
+       {{#if password.color}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-password { color: {{password.color}}; }\n \
+       {{/if}} \
+       {{#if password.fontSize}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-password { font-size: {{password.fontSize}}; }\n \
+       {{/if}} \
+       {{#if password.font}} \
+        #okta-sign-in .o-form .o-form-input #okta-signin-password { font: {{password.font}}; }\n \
+       {{/if}} \
+       \
+       {{#if signInButton.display}} \
+        #okta-sign-in.auth-container #okta-signin-submit { display: {{signInButton.display}}; }\n \
+       {{/if}} \
+       {{#if signInButton.height}} \
+        #okta-sign-in.auth-container #okta-signin-submit { height: {{signInButton.height}}; }\n \
+       {{/if}} \
+       {{#if signInButton.width}} \
+        #okta-sign-in.auth-container #okta-signin-submit { width: {{signInButton.width}}; }\n \
+       {{/if}} \
+       {{#if signInButton.background}} \
+        #okta-sign-in.auth-container #okta-signin-submit { background: {{signInButton.background}}; }\n \
+       {{/if}} \
+       {{#if signInButton.color}} \
+        #okta-sign-in.auth-container #okta-signin-submit { color: {{signInButton.color}}; }\n \
+       {{/if}} \
+       {{#if signInButton.fontSize}} \
+        #okta-sign-in.auth-container #okta-signin-submit { font-size: {{signInButton.fontSize}}; }\n \
+       {{/if}} \
+       {{#if signInButton.font}} \
+        #okta-sign-in.auth-container #okta-signin-submit { font: {{signInButton.font}}; }\n \
+       {{/if}} \
+      ');
+    return template(cssTrans || cssTranslation);
+  }
+
   downloadPage(): void {
+  	var customCss = this.getCss(null);
   	function init(orgName, yourOktaDomain) {
 		  var orgUrl  = 'https://' + yourOktaDomain;
-		  
-		  var cssTranslation = {
-		    global: {
-		      backgroundColor: "red",
-		      color: "pink",
-		    },
-		    signInLabel: {
-		      backgroundColor: "yellow",
-		      color: "purple",
-		      fontSize: "20px",
-		      font: "bold",
-		    },
-		    username: {
-		      backgroundColor: "yellow",
-		      color: "purple",
-		      fontSize: "20px",
-		      font: "bold",
-		    },
-		    password: {
-		      backgroundColor: "green",
-		      color: "orange",
-		      fontSize: "5px",
-		      font: "600"
-		    },
-		    signInButton: {
-		      backgroundColor: "green",
-		      color: "orange",
-		      fontSize: "5px",
-		      font: "600"
-		    } 
-		  };
 		 
 		  var configTranslation: any = {
 		    baseUrl: orgUrl,
@@ -57,70 +292,6 @@ export default class WidgetService {
 		    }
 		  };
 		  
-		  function getCss() {
-		      var template = Handlebars.compile('\
-		       {{#if global.backgroundColor}} \
-		        #okta-sign-in.auth-container.main-container { background: {{global.backgroundColor}}; }\n \
-		       {{/if}} \
-		       {{#if global.color}} \
-		        #okta-sign-in { color: {{global.color}}; }\n \
-		       {{/if}} \
-		       \
-		       {{#if signInLabel.backgroundColor}} \
-		        #okta-sign-in.auth-container .o-form-head { background: {{signInLabel.backgroundColor}}; }\n \
-		       {{/if}} \
-		       {{#if signInLabel.color}} \
-		        #okta-sign-in.auth-container .o-form-head { color: {{signInLabel.color}}; }\n \
-		       {{/if}} \
-		       {{#if signInLabel.fontSize}} \
-		        #okta-sign-in.auth-container .o-form-head { font-size: {{signInLabel.fontSize}}; }\n \
-		       {{/if}} \
-		       {{#if signInLabel.font}} \
-		        #okta-sign-in.auth-container .o-form-head { font: {{signInLabel.font}}; }\n \
-		       {{/if}} \
-		       \
-		       {{#if username.backgroundColor}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-username { background: {{username.backgroundColor}}; }\n \
-		       {{/if}} \
-		       {{#if username.color}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-username { color: {{username.color}}; }\n \
-		       {{/if}} \
-		       {{#if username.fontSize}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-username { font-size: {{username.fontSize}}; }\n \
-		       {{/if}} \
-		       {{#if username.font}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-username { font: {{username.font}}; }\n \
-		       {{/if}} \
-		       \
-		       {{#if password.backgroundColor}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-password { background: {{password.backgroundColor}}; }\n \
-		       {{/if}} \
-		       {{#if password.color}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-password { color: {{password.color}}; }\n \
-		       {{/if}} \
-		       {{#if password.fontSize}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-password { font-size: {{password.fontSize}}; }\n \
-		       {{/if}} \
-		       {{#if password.font}} \
-		        #okta-sign-in .o-form .o-form-input #okta-signin-password { font: {{password.font}}; }\n \
-		       {{/if}} \
-		       \
-		       {{#if signInButton.backgroundColor}} \
-		        #okta-sign-in.auth-container #okta-signin-submit { background: {{signInButton.backgroundColor}}; }\n \
-		       {{/if}} \
-		       {{#if signInButton.color}} \
-		        #okta-sign-in.auth-container #okta-signin-submit { color: {{signInButton.color}}; }\n \
-		       {{/if}} \
-		       {{#if signInButton.fontSize}} \
-		        #okta-sign-in.auth-container #okta-signin-submit { font-size: {{signInButton.fontSize}}; }\n \
-		       {{/if}} \
-		       {{#if signInButton.font}} \
-		        #okta-sign-in.auth-container #okta-signin-submit { font: {{signInButton.font}}; }\n \
-		       {{/if}} \
-		      ');
-		    return template(cssTranslation);
-		  }
-		  
 		  function getConfig() {
 		    var config = Object.assign({}, configTranslation);
 		    delete config.i18n;
@@ -130,15 +301,12 @@ export default class WidgetService {
 		  }
 		  
 		  return {
-		    getCss: getCss,
 		    getConfig: getConfig,
-		    cssTranslation: cssTranslation,
 		    configTranslation: configTranslation
 		  };
 		}
 
 		var widgetUtil = init('Kaala', 'bsanth.oktapreview.com');
-		var customCss = widgetUtil.getCss();
 		var widgetConfig:any = widgetUtil.getConfig();
 
 
@@ -189,18 +357,18 @@ export default class WidgetService {
 		    
 
 		function download(filename, text) {
-		    var pom = document.createElement('a');
-		    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-		    pom.setAttribute('download', filename);
+	    var pom = document.createElement('a');
+	    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	    pom.setAttribute('download', filename);
 
-		    if (document.createEvent) {
-		        var event = document.createEvent('MouseEvents');
-		        event.initEvent('click', true, true);
-		        pom.dispatchEvent(event);
-		    }
-		    else {
-		        pom.click();
-		    }
+	    if (document.createEvent) {
+	        var event = document.createEvent('MouseEvents');
+	        event.initEvent('click', true, true);
+	        pom.dispatchEvent(event);
+	    }
+	    else {
+	        pom.click();
+	    }
 		}
 
 		download('loginPage.html', indexFile);

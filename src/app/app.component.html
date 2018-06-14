@@ -55,7 +55,8 @@
           </div>
           <div class="form-group mt-4">
             <label for="font-size">Font size</label>
-            <input type="text" class="form-control" id="font-size" placeholder="#">
+            <input type="text" class="form-control" id="font-size" placeholder="#" [(ngModel)]="model.fontSize"
+   (keyup.enter)="getStyles()">
           </div>
           <div class="form-group mt-4">
             <label for="font-color">Font color</label>
@@ -69,7 +70,8 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label for="height" class="text-muted">Height</label>
-              <input type="text" class="form-control" id="height" placeholder="px or %">
+              <input type="text" class="form-control" id="height" placeholder="px or %" [(ngModel)]="model.height" 
+   (keyup.enter)="getStyles()">
             </div>
             <div class="form-group col-md-4">
               <label for="min-height" class="text-muted">Min Height</label>
@@ -84,7 +86,8 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label for="width" class="text-muted">Width</label>
-              <input type="text" class="form-control" id="width" placeholder="px or %">
+              <input type="text" class="form-control" id="width" placeholder="px or %" [(ngModel)]="model.width"
+   (keyup.enter)="getStyles()">
             </div>
             <div class="form-group col-md-4">
               <label for="min-width" class="text-muted">Min Width</label>
@@ -129,9 +132,9 @@
               <input type="text" class="form-control" id="border-bottom" placeholder="px or %">
             </div>
             <div class="form-group col-md-4">
-              <label for="border-left" class="text-muted">Left</label>
-              <input type="text" class="form-control" id="border-left" placeholder="px or %">
-            </div>
+                <label for="border-left" class="text-muted">Left</label>
+                <input type="text" class="form-control" id="border-left" placeholder="px or %" (keyup.enter)="changeComponent('signInButton')">
+              </div>
           </div>
       </div>
     </div>

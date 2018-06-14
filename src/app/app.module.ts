@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { ColorPickerModule } from 'ngx-color-picker';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     UiSwitchModule.forRoot({
       size: 'small',
