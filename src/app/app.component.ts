@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     username: 'Username'
   };
 
-  model = new CssConfig("username", null, null, null, null, null, null, null, null, null);
+  model = new CssConfig("authContainer", null, null, null, null, null, null, null, null, null);
   currentHovered: any;
   currentSelected: any;
   control: any;
@@ -110,18 +110,18 @@ export class AppComponent implements OnInit {
       return;
     }
     this.selectableElementsSelectors = {
-      '#okta-sign-in.auth-container.main-container[data-se=auth-container]': '',
-      '#okta-sign-in.auth-container.main-container .auth-header': '',
-      '#okta-sign-in.auth-container.main-container .auth-content': '',
-      '#okta-sign-in.auth-container.main-container .auth-content-inner': '',
-      '#okta-sign-in.auth-container.main-container .primary-auth': '',
-      '#okta-sign-in.auth-container.main-container .primary-auth-form': '',
-      '#okta-sign-in.auth-container.main-container .o-form-content': '',
-      '#okta-sign-in.auth-container.main-container .o-form-fieldset-container': '',
-      '#okta-sign-in.auth-container.main-container .o-form-button-bar': '',
-      '#okta-sign-in.auth-container.main-container .auth-footer': '',
+      '#okta-sign-in.auth-container.main-container[data-se=auth-container]': 'authContainer',
+      '#okta-sign-in.auth-container.main-container .auth-header': 'authHeader',
+      '#okta-sign-in.auth-container.main-container .auth-content': 'authContent',
+      '#okta-sign-in.auth-container.main-container .auth-content-inner': 'authContentInner',
+      '#okta-sign-in.auth-container.main-container .primary-auth': 'primaryAuth',
+      '#okta-sign-in.auth-container.main-container .primary-auth-form': 'primaryAuthForm',
+      '#okta-sign-in.auth-container.main-container .o-form-content': 'oFormContent',
+      '#okta-sign-in.auth-container.main-container .o-form-fieldset-container': 'oFormFieldsetContainer',
+      '#okta-sign-in.auth-container.main-container .o-form-button-bar': 'oFormButtonBar',
+      '#okta-sign-in.auth-container.main-container .auth-footer': 'authFooter',
       '#okta-sign-in.auth-container .o-form-head': 'signInLabel',
-      '#okta-sign-in .o-form .o-form-input #okta-signin-password': '',
+      '#okta-sign-in .o-form .o-form-input #okta-signin-password': 'password',
       '#okta-sign-in .o-form .o-form-input #okta-signin-username': 'username',
       '#okta-sign-in.auth-container .button-primary': 'signInButton',
     };
@@ -217,7 +217,7 @@ export class AppComponent implements OnInit {
     };
 
     if (component) {
-      var componentConfig = this.config[componentConfig];
+      var componentConfig = this.config[component];
 
       if (this.config[component]) {
         this.model.component = component;

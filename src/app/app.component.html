@@ -46,7 +46,7 @@
               </ul>
         </div>
       <div class="col-6">
-        <div id="okta-login-container" (mouseover)="hoverElements($event); $event.stopPropagation();" (click)="clickElements($event); $event.stopPropagation();"></div>
+        <div id="okta-login-container" (mouseover)="hoverElements($event); $event.stopPropagation(); $event.preventDefault();" (click)="clickElements($event); $event.preventDefault();"></div>
       </div>
       <div class="col section">
           <div class="form-group">
@@ -60,7 +60,7 @@
           </div>
           <div class="form-group mt-4">
             <label for="font-color">Font color</label>
-            <input type="text" class="form-control" id="font-color" [(colorPicker)]="model.color" [cpPosition]="'bottom'" [value]="model.color"/>
+            <input type="text" class="form-control" id="font-color" [(colorPicker)]="model.color" [cpPosition]="'bottom'" [value]="model.color" (keyup.enter)="getStyles()"/>
           </div>
           <div class="form-group mt-4">
               <label for="background">Background</label>
@@ -133,7 +133,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="border-left" class="text-muted">Left</label>
-                <input type="text" class="form-control" id="border-left" placeholder="px or %" (keyup.enter)="changeComponent('signInButton')">
+                <input type="text" class="form-control" id="border-left" placeholder="px or %">
               </div>
           </div>
       </div>
