@@ -111,3 +111,11 @@ ui-switch {
     margin-left: 20%;
     width: 60%;
 }
+
+.dashed {
+    border: 2px dashed red !important;
+}
+
+.bordered {
+    border: 1px solid red !important;
+}

@@ -20,9 +20,9 @@
   <div class="container-fluid">
     <div class="row row-100">
         <div class="col left-col">
-            <button type="button" class="btn btn-primary btn-block mb-4">
+            <button type="button" class="btn btn-primary btn-block mb-4" (click)="initSelectableElements()">
                 <i class="material-icons">center_focus_weak</i>
-                Select Element
+                Select Mode
             </button>
             <h6>Components</h6>
             <ul class="list-group mb-4 components">
@@ -46,7 +46,7 @@
               </ul>
         </div>
       <div class="col-6">
-        <div id="okta-login-container"></div>
+        <div id="okta-login-container" (mouseover)="hoverElements($event); $event.stopPropagation();" (click)="clickElements($event); $event.stopPropagation();"></div>
       </div>
       <div class="col section">
           <div class="form-group">
@@ -141,7 +141,7 @@
   </div>
 </div>
 
-<div class="modal-background" [hidden]="hideChooseTemplateModal && hideUrlModal">
+<!-- <div class="modal-background" [hidden]="hideChooseTemplateModal && hideUrlModal">
 </div>
 
 <div class="modal-url" [hidden]="hideUrlModal">
@@ -163,4 +163,4 @@
     <button type="button" class="btn btn-primary mb-4 modal-button modal-template-button" (click)="startEditing()">
         Start Editing!
     </button>
-  </div>
+  </div> -->
