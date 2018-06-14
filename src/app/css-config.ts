@@ -2,6 +2,7 @@ export class CssConfig {
 	constructor(
 		public component: string,
 		public fontSize: string,
+		public borderColor: string,
 		public display: string,
 	  public height: string,
 	  public width: string,

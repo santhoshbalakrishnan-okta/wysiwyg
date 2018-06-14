@@ -20,13 +20,15 @@ export class AppComponent implements OnInit {
   hideUrlModal: boolean = false;
   hideChooseTemplateModal: boolean = true;
   config = {};
+  orgUrl = 'https://atko.oktapreview.com';
 
   features = {};
   i18n = {
-    username: 'Username'
+    username: 'Username',
+    signInLabel : 'Sign In'
   };
 
-  model = new CssConfig("authContainer", null, null, null, null, null, null, null, null, null);
+  model = new CssConfig("username", null, null, null, null, null, null, null, null, null, null);
   currentHovered: any;
   currentSelected: any;
   control: any;
@@ -35,25 +37,28 @@ export class AppComponent implements OnInit {
   selectMode: boolean = false;
 
   constructor(private widgetService: WidgetService) {
-    this.widget = new OktaSignIn({
-      baseUrl: 'https://atko.oktapreview.com',
-      clientId: '{clientId}',
-      redirectUri: 'http://localhost:4200',
-      authParams: {
-        issuer: 'default'
-      }
-    });
   }
 
   ngOnInit() {
-    var orgUrl = "https://bsanth.oktapreview.com";
-        
-		// config
-    var config = {
-    	baseUrl: orgUrl
-    };
+    this.createAndRenderNewWideget();
+  }
 
-		// render widget
+  createAndRenderNewWideget() {
+    if (this.widget) {
+      this.widget.remove();
+    }
+    this.widget = new OktaSignIn({
+      baseUrl: this.orgUrl,
+      features: this.features,
+      i18n: {
+        en: {
+          'primaryauth.title': this.i18n.signInLabel,
+          'primaryauth.username.placeholder': this.i18n.username
+        }
+      }
+    });
+
+    // render widget
     this.widget.renderEl({ el: '#okta-login-container' },
       function(res) {
       },
@@ -68,34 +73,7 @@ export class AppComponent implements OnInit {
     if (feature) {
       this.features[feature] = value;  
     }
-    
-    //$('#okta-login-container').empty();
-    this.widget.remove();
-    this.widget = new OktaSignIn({
-      baseUrl: 'https://atko.oktapreview.com',
-      clientId: '{clientId}',
-      redirectUri: 'http://localhost:4200',
-      authParams: {
-        issuer: 'default'
-      },
-      features: this.features,
-      i18n: {
-        en: {
-          'primaryauth.username.placeholder': this.i18n.username
-        }
-      }
-    });
-
-
-    // render widget
-    this.widget.renderEl({ el: '#okta-login-container' },
-      function(res) {
-      },
-      function(error) {
-        // failure fn
-        console.log(error.message, error);
-      }
-    );
+    this.createAndRenderNewWideget();
   }
 
   initSelectableElements() {
@@ -211,9 +189,10 @@ export class AppComponent implements OnInit {
       height: this.model.height,
       width: this.model.width,
       margin: this.model.margin,
-      border: this.model.border,
+      "border-width": this.model.border,
       background: this.model.background,
-      color: this.model.color
+      color: this.model.color,
+      "border-color": this.model.borderColor
     };
 
     if (component) {
@@ -226,6 +205,8 @@ export class AppComponent implements OnInit {
         this.model.width = componentConfig.width;
         this.model.color = componentConfig.color;
         this.model.background = componentConfig.background;
+        this.model.border = componentConfig["border-width"];
+        this.model.borderColor = componentConfig["border-color"];
       } else {
         this.model.component = component;
         this.model.fontSize = null;
@@ -233,6 +214,8 @@ export class AppComponent implements OnInit {
         this.model.width = null;
         this.model.color = null;
         this.model.background = null;
+        this.model.border = null;
+        this.model.borderColor = null;
       }
     }
   }
