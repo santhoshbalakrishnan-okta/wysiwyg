@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   bgColor: any = 'default';
   hideUrlModal: boolean = false;
   hideChooseTemplateModal: boolean = true;
-  config = {};
+  config  = {};
   orgUrl = 'https://atko.oktapreview.com';
 
   features = {};
@@ -28,7 +28,19 @@ export class AppComponent implements OnInit {
     signInLabel : 'Sign In'
   };
 
-  model = new CssConfig("username", null, null, null, null, null, null, null, null, null, null);
+  cssConfig = {
+    component : null,
+    text: null,
+    fontSize : null,
+    height : null,
+    width : null,
+    color : null,
+    background : null,
+    border : null,
+    borderColor : null,
+    margin : null,
+    display : null
+  };
   currentHovered: any;
   currentSelected: any;
   control: any;
@@ -40,7 +52,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.changeComponent('username');
     this.createAndRenderNewWideget();
+    this.getStyles();
   }
 
   createAndRenderNewWideget() {
@@ -162,7 +176,7 @@ export class AppComponent implements OnInit {
   }
 
   downloadCode() {
-    this.widgetService.downloadPage();
+    this.widgetService.downloadPage(this.features, this.config, this.i18n, this.orgUrl);
   }
 
   showChooseTemplateModal() {
@@ -183,39 +197,39 @@ export class AppComponent implements OnInit {
   }
 
   changeComponent(component) {
-    this.config[this.model.component] = {
-      "font-size": this.model.fontSize,
-      display: this.model.display,
-      height: this.model.height,
-      width: this.model.width,
-      margin: this.model.margin,
-      "border-width": this.model.border,
-      background: this.model.background,
-      color: this.model.color,
-      "border-color": this.model.borderColor
+    this.config[this.cssConfig.component] = {
+      "font-size": this.cssConfig.fontSize,
+      display: this.cssConfig.display,
+      height: this.cssConfig.height,
+      width: this.cssConfig.width,
+      margin: this.cssConfig.margin,
+      "border-width": this.cssConfig.border,
+      background: this.cssConfig.background,
+      color: this.cssConfig.color,
+      "border-color": this.cssConfig.borderColor
     };
 
     if (component) {
       var componentConfig = this.config[component];
 
       if (this.config[component]) {
-        this.model.component = component;
-        this.model.fontSize = componentConfig["font-size"];
-        this.model.height = componentConfig.height;
-        this.model.width = componentConfig.width;
-        this.model.color = componentConfig.color;
-        this.model.background = componentConfig.background;
-        this.model.border = componentConfig["border-width"];
-        this.model.borderColor = componentConfig["border-color"];
+        this.cssConfig.component = component;
+        this.cssConfig.fontSize = componentConfig["font-size"];
+        this.cssConfig.height = componentConfig.height;
+        this.cssConfig.width = componentConfig.width;
+        this.cssConfig.color = componentConfig.color;
+        this.cssConfig.background = componentConfig.background;
+        this.cssConfig.border = componentConfig["border-width"];
+        this.cssConfig.borderColor = componentConfig["border-color"];
       } else {
-        this.model.component = component;
-        this.model.fontSize = null;
-        this.model.height = null;
-        this.model.width = null;
-        this.model.color = null;
-        this.model.background = null;
-        this.model.border = null;
-        this.model.borderColor = null;
+        this.cssConfig.component = component;
+        this.cssConfig.fontSize = null;
+        this.cssConfig.height = null;
+        this.cssConfig.width = null;
+        this.cssConfig.color = null;
+        this.cssConfig.background = null;
+        this.cssConfig.border = null;
+        this.cssConfig.borderColor = null;
       }
     }
   }

@@ -6,198 +6,7 @@ import Handlebars from 'handlebars/dist/handlebars';
 })
 export default class WidgetService {
 
-  constructor() { }
-
-  getCss(cssTrans): void {
-		var cssTranslation = {
-			authContainer: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				"border-color": null,
-				font: null,
-			},
-			authHeader: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				"border-color": null,
-				font: null,
-			},
-			authContent: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				"border-color": null,
-				font: null,
-			},
-			authContentInner: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				"border-color": null,
-				font: null,
-			},
-			primaryAuth: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				"border-color": null,
-				font: null,
-			},
-			primaryAuthForm: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				"border-color": null,
-				font: null,
-			},
-			oFormContent: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				font: null,
-			},
-			oFormFieldsetContainer: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				font: null,
-			},
-			oFormButtonBar: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				font: null,
-			},
-			authFooter: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				font: null,
-			},
-			registrationContainer: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				"font-size": null,
-				font: null,
-			},
-			signInLabel: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				fontSize: null,
-				font: null,
-			},
-			username: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				fontSize: null,
-				font: null,
-			},
-			password: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				fontSize: null,
-				font: null
-			},
-			signInButton: {
-				display: null,
-				height: null,
-				width: null,
-				margin: null,
-				padding: null,
-				border: null,
-				background: null,
-				color: null,
-				fontSize: null,
-				font: null
-			}
-		};
-  	var template = Handlebars.compile('\
+	template = Handlebars.compile('\
        {{#each authContainer}} \
          {{#if this}} \
            #okta-sign-in.auth-container.main-container[data-se=auth-container] { {{@key}}: {{this}}; }\n \
@@ -392,45 +201,33 @@ export default class WidgetService {
        {{#if signInButton.font}} \
         #okta-sign-in.auth-container .button-primary { font: {{signInButton.font}}; }\n \
        {{/if}} \
+       {{#each oFormFieldset}} \
+         {{#if this}} \
+           #okta-sign-in.auth-container.main-container .o-form-fieldset { {{@key}}: {{this}}; }\n \
+         {{/if}} \
+       {{/each}} \
       ');
-    return template(cssTrans || cssTranslation);
+
+  constructor() { }
+
+  getCss(cssTranslation): string {
+    return this.template(cssTranslation);
 	}
 	
-  downloadPage(): void {
-  	var customCss = this.getCss(null);
-  	function init(orgName, yourOktaDomain) {
-		  var orgUrl  = 'https://' + yourOktaDomain;
-		 
-		  var configTranslation: any = {
-		    baseUrl: orgUrl,
-		    language: 'en',
-		    i18n: {
-		      "primaryauth.title": 'Sign in to ' + orgName,
-		      "primaryauth.username.placeholder": 'Your ' + orgName + ' Username'
-		    },
-		    helpLinks: {
-		      help: orgUrl + '/help/login',
-		      forgotPassword: orgUrl + '/forgot-password',
-		      custom: []
-		    }
-		  };
+  downloadPage(features, cssConfig, i18n, orgUrl): void {
+  	var customCss:string = this.getCss(cssConfig).trim();
 		  
-		  function getConfig() {
-		    var config = Object.assign({}, configTranslation);
-		    delete config.i18n;
-		    config.i18n = {};
-		    config.i18n[config.language] = configTranslation.i18n;
-		    return JSON.stringify(config, null, 2);
-		  }
-		  
-		  return {
-		    getConfig: getConfig,
-		    configTranslation: configTranslation
-		  };
-		}
-
-		var widgetUtil = init('Kaala', 'bsanth.oktapreview.com');
-		var widgetConfig:any = widgetUtil.getConfig();
+    var config = {
+    	baseUrl: orgUrl,
+    	i18n: {
+    		en : {
+    			'primaryauth.title': i18n.signInLabel,
+          'primaryauth.username.placeholder': i18n.username
+        }
+    	},
+    	features: features
+    };
+    var widgetConfig = JSON.stringify(config, null, 2);
 
 
 		var indexFile = `
@@ -454,9 +251,10 @@ export default class WidgetService {
 		    </style>
 		</head>
 		<body>
+				<div class="login-bg-image" style="background-image: {{bgImageUrl}}"></div>
 		    <div id="okta-login-container"></div>
 		    <script type="text/javascript">
-			  var orgUrl = ${widgetConfig.baseUrl};
+			  var orgUrl = "${orgUrl}";
 		        
 				// config
 		    var config = ${widgetConfig};

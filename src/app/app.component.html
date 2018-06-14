@@ -51,26 +51,26 @@
       <div class="col section">
           <div class="form-group">
             <label for="text">Text</label>
-            <input type="text" class="form-control" id="text" placeholder="Default text" [(ngModel)]="i18n[model.component]" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
+            <input type="text" class="form-control" id="text" placeholder="Default text" [(ngModel)]="i18n[cssConfig.component]" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
           </div>
           <div class="form-group mt-4">
             <label for="font-size">Font size</label>
-            <input type="text" class="form-control" id="font-size" placeholder="#" [(ngModel)]="model.fontSize"
+            <input type="text" class="form-control" id="font-size" placeholder="#" [(ngModel)]="cssConfig.fontSize"
    (keyup.enter)="getStyles()">
           </div>
           <div class="form-group mt-4">
             <label for="font-color">Font color</label>
-            <input type="text" class="form-control" id="font-color" [(colorPicker)]="model.color" [cpPosition]="'bottom'" [value]="model.color" (keyup.enter)="getStyles()"/>
+            <input type="text" class="form-control" id="font-color" [(colorPicker)]="cssConfig.color" [cpPosition]="'bottom'" [value]="cssConfig.color" (keyup.enter)="getStyles()"/>
           </div>
           <div class="form-group mt-4">
               <label for="background">Background</label>
-              <input type="text" class="form-control" id="background" [(colorPicker)]="model.background" [cpPosition]="'bottom'" [value]="model.background" (keyup.enter)="getStyles()"/>
+              <input type="text" class="form-control" id="background" [(colorPicker)]="cssConfig.background" [cpPosition]="'bottom'" [value]="cssConfig.background" (keyup.enter)="getStyles()"/>
             </div>
           <h6 class="mt-4">Height Properties</h6>
           <div class="row">
             <div class="form-group col-md-4">
               <label for="height" class="text-muted">Height</label>
-              <input type="text" class="form-control" id="height" placeholder="px or %" [(ngModel)]="model.height" 
+              <input type="text" class="form-control" id="height" placeholder="px or %" [(ngModel)]="cssConfig.height" 
    (keyup.enter)="getStyles()">
             </div>
             <div class="form-group col-md-4">
@@ -86,7 +86,7 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label for="width" class="text-muted">Width</label>
-              <input type="text" class="form-control" id="width" placeholder="px or %" [(ngModel)]="model.width"
+              <input type="text" class="form-control" id="width" placeholder="px or %" [(ngModel)]="cssConfig.width"
    (keyup.enter)="getStyles()">
             </div>
             <div class="form-group col-md-4">
@@ -121,11 +121,11 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label for="border" class="text-muted">TRLB</label>
-              <input type="text" class="form-control" id="border" placeholder="0 0 0 0" [(ngModel)]="model.border" (keyup.enter)="getStyles()">
+              <input type="text" class="form-control" id="border" placeholder="0 0 0 0" [(ngModel)]="cssConfig.border" (keyup.enter)="getStyles()">
             </div>
             <div class="form-group col-md-4">
               <label for="border-color" class="text-muted">Color</label>
-              <input type="text" class="form-control" id="border-color" [(colorPicker)]="model.borderColor" [cpPosition]="'bottom'" [value]="model.borderColor" (keyup.enter)="getStyles()">
+              <input type="text" class="form-control" id="border-color" [(colorPicker)]="cssConfig.borderColor" [cpPosition]="'bottom'" [value]="cssConfig.borderColor" (keyup.enter)="getStyles()">
             </div>
           </div>
       </div>
