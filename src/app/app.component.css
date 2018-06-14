@@ -119,3 +119,19 @@ ui-switch {
 .bordered {
     border: 1px solid red !important;
 }
+
+.templates {
+    margin-top: 5%;
+}
+
+.templates .card {
+    background: #45465C;
+}
+
+.templates .card:hover {
+    border: 2px solid #e22866;
+}
+
+.card-img-top {
+    max-width: 100%;
+}
