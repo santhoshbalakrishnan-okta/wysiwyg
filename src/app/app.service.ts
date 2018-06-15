@@ -12,7 +12,7 @@ export default class WidgetService {
            #okta-sign-in.auth-container.main-container[data-se=auth-container] { {{@key}}: {{this}}; }\n \
          {{/if}}\
        {{/each}}\
-       {{#if authContainer.border}}\
+       {{#if authContainer.border-width}}\
           #okta-sign-in.auth-container.main-container[data-se=auth-container] { border-style: solid !important;}\n \
        {{/if}}\
        {{#each authHeader}}\
@@ -20,7 +20,7 @@ export default class WidgetService {
            #okta-sign-in.auth-container.main-container .auth-header { {{@key}}: {{this}} !important; }\n \
          {{/if}}\
        {{/each}}\
-       {{#if authHeader.border}}\
+       {{#if authHeader.border-width}}\
           #okta-sign-in.auth-container.main-container .auth-header { border-style: solid !important;}\n \
        {{/if}}\
        {{#each authContent}}\
@@ -84,8 +84,8 @@ export default class WidgetService {
        {{#if signInLabel.padding}}\
         #okta-sign-in.auth-container .o-form-head { padding: {{signInLabel.padding}}; }\n \
        {{/if}}\
-       {{#if signInLabel.border}}\
-        #okta-sign-in.auth-container .o-form-head { border: {{signInLabel.border}}; }\n \
+       {{#if signInLabel.border-width}}\
+        #okta-sign-in.auth-container .o-form-head { border: {{signInLabel.border-width}}; }\n \
        {{/if}}\
        {{#if signInLabel.background}}\
         #okta-sign-in.auth-container .o-form-head { background: {{signInLabel.background}}; }\n \
@@ -115,8 +115,11 @@ export default class WidgetService {
        {{#if username.padding}}\
         #okta-sign-in .o-form .o-form-input #okta-signin-username { padding: {{username.padding}}; }\n \
        {{/if}}\
-       {{#if username.border}}\
-        #okta-sign-in.auth-container .o-form-input-name-username { border: {{username.border}} !important; border-style: solid !important; }\n \
+       {{#if username.border-width}}\
+        #okta-sign-in.auth-container .o-form-input-name-username { border: {{username.border-width}} !important; border-style: solid !important; }\n \
+       {{/if}}\
+       {{#if username.border-radius}}\
+        #okta-sign-in.auth-container .o-form-input-name-username { border-radius: {{username.border-radius}};}\n \
        {{/if}}\
        {{#if username.border-color}}\
        	#okta-sign-in.auth-container .o-form-input-name-username { border-color: {{username.border-color}} !important;}\n \
@@ -149,11 +152,14 @@ export default class WidgetService {
        {{#if password.padding}}\
         #okta-sign-in .o-form .o-form-input .o-form-input-name-password { padding: {{password.padding}}; }\n \
        {{/if}}\
-       {{#if password.border}}\
-        #okta-sign-in .o-form-input-name-password { border: {{password.border}} !important; border-style: solid !important;}\n \
+       {{#if password.border-width}}\
+        #okta-sign-in.auth-container .o-form-input-name-password { border: {{password.border-width}} !important; border-style: solid !important;}\n \
+       {{/if}}\
+       {{#if password.border-radius}}\
+        #okta-sign-in.auth-container .o-form-input-name-password { border-radius: {{password.border-radius}};}\n \
        {{/if}}\
        {{#if password.border-color}}\
-       	#okta-sign-in .o-form-input-name-password { border-color: {{password.border-color}} !important;}\n \
+       	#okta-sign-in.auth-container .o-form-input-name-password { border-color: {{password.border-color}} !important;}\n \
        {{/if}}\
        {{#if password.background}}\
         #okta-sign-in .o-form .o-form-input .o-form-input-name-password { background: {{password.background}}; }\n \
@@ -183,8 +189,11 @@ export default class WidgetService {
        {{#if signInButton.padding}}\
         #okta-sign-in.auth-container .button-primary { padding: {{signInButton.padding}}; }\n \
        {{/if}}\
-       {{#if signInButton.border}}\
-        #okta-sign-in.auth-container .button-primary { border-width: {{signInButton.border}} !important; border-style: solid !important;}\n \
+       {{#if signInButton.border-radius}}\
+        #okta-sign-in.auth-container .button-primary { border-radius: {{signInButton.border-radius}};}\n \
+       {{/if}}\
+       {{#if signInButton.border-width}}\
+        #okta-sign-in.auth-container .button-primary { border-width: {{signInButton.border-width}} !important; border-style: solid !important;}\n \
        {{/if}}\
        {{#if signInButton.border-color}}\
         #okta-sign-in.auth-container .button-primary { border-color: {{signInButton.border-color}} !important;}\n \
@@ -214,10 +223,10 @@ export default class WidgetService {
     return this.template(cssTranslation);
 	}
 	
-  downloadPage(features, cssConfig, i18n, orgUrl): void {
+  downloadPage(features, cssConfig, i18n, orgUrl, logo): void {
   	var customCss:string = this.getCss(cssConfig).trim();
 		  
-    var config = {
+    var config :any= {
     	baseUrl: orgUrl,
     	i18n: {
     		en : {
@@ -227,6 +236,9 @@ export default class WidgetService {
     	},
     	features: features
     };
+    if (logo) {
+    	config.logo = logo;
+    }
     var widgetConfig = JSON.stringify(config, null, 2);
 
 

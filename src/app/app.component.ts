@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   hideChooseTemplateModal: boolean = true;
   config  = {};
   orgUrl = 'https://atko.oktapreview.com';
+  logo: string = null;
 
   features = {};
   i18n = {
@@ -41,7 +42,8 @@ export class AppComponent implements OnInit {
     border : null,
     borderColor : null,
     margin : null,
-    display : null
+    display : null,
+    borderRadius: null
   };
   currentHovered: any;
   currentSelected: any;
@@ -60,7 +62,8 @@ export class AppComponent implements OnInit {
     if (this.widget) {
       this.widget.remove();
     }
-    this.widget = new OktaSignIn({
+
+    var config: any = {
       baseUrl: this.orgUrl,
       features: this.features,
       i18n: {
@@ -69,7 +72,12 @@ export class AppComponent implements OnInit {
           'primaryauth.username.placeholder': this.i18n.username
         }
       }
-    });
+    };
+
+    if (this.logo) {
+      config.logo = this.logo;
+    }
+    this.widget = new OktaSignIn(config);
 
     // render widget
     this.widget.renderEl({ el: '#okta-login-container' },
@@ -175,7 +183,7 @@ export class AppComponent implements OnInit {
   }
 
   downloadCode() {
-    this.widgetService.downloadPage(this.features, this.config, this.i18n, this.orgUrl);
+    this.widgetService.downloadPage(this.features, this.config, this.i18n, this.orgUrl, this.logo);
   }
 
   showChooseTemplateModal() {
@@ -187,6 +195,7 @@ export class AppComponent implements OnInit {
     this.templateName = templateName;
     this.config = this.templateService.getTemplate(this.templateName);
     this.features = this.templateService.getFeatures(this.templateName);
+    this.logo = this.templateService.getLogo(this.templateName);
     this.hideUrlModal = true;
     this.hideChooseTemplateModal = true;
     this.updateConfigAndRenderWidgetAgain(null, null);
@@ -211,7 +220,8 @@ export class AppComponent implements OnInit {
       "border-width": this.cssConfig.border,
       background: this.cssConfig.background,
       color: this.cssConfig.color,
-      "border-color": this.cssConfig.borderColor
+      "border-color": this.cssConfig.borderColor,
+      "border-radius": this.cssConfig.borderRadius
     };
 
     if (component) {
@@ -227,6 +237,7 @@ export class AppComponent implements OnInit {
         this.cssConfig.border = componentConfig["border-width"];
         this.cssConfig.borderColor = componentConfig["border-color"];
         this.cssConfig.margin = componentConfig.margin;
+        this.cssConfig.borderRadius = componentConfig["border-radius"];
       } else {
         this.cssConfig.component = component;
         this.cssConfig.fontSize = null;
@@ -237,6 +248,7 @@ export class AppComponent implements OnInit {
         this.cssConfig.border = null;
         this.cssConfig.borderColor = null;
         this.cssConfig.margin = null;
+        this.cssConfig.borderRadius = null;
       }
     }
   }
