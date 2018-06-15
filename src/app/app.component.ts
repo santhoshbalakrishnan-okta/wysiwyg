@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     }
 
     var config: any = {
-      baseUrl: this.orgUrl,
+      baseUrl: "http://localhost:8000",
       features: this.features,
       i18n: {
         en: {
