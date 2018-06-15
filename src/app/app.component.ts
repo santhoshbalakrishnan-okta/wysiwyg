@@ -54,8 +54,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.changeComponent('username');
-    this.createAndRenderNewWideget();
   }
 
   createAndRenderNewWideget() {
@@ -193,6 +191,7 @@ export class AppComponent implements OnInit {
     this.hideChooseTemplateModal = true;
     this.updateConfigAndRenderWidgetAgain(null, null);
     this.getStyles();
+    this.changeComponent('username');
   }
 
   getStyles() {
@@ -227,6 +226,7 @@ export class AppComponent implements OnInit {
         this.cssConfig.background = componentConfig.background;
         this.cssConfig.border = componentConfig["border-width"];
         this.cssConfig.borderColor = componentConfig["border-color"];
+        this.cssConfig.margin = componentConfig.margin;
       } else {
         this.cssConfig.component = component;
         this.cssConfig.fontSize = null;
@@ -236,6 +236,7 @@ export class AppComponent implements OnInit {
         this.cssConfig.background = null;
         this.cssConfig.border = null;
         this.cssConfig.borderColor = null;
+        this.cssConfig.margin = null;
       }
     }
   }
