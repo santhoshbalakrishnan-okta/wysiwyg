@@ -225,6 +225,14 @@ export default class WidgetService {
            #okta-sign-in.auth-container.main-container .o-form-fieldset { {{@key}}: {{this}}; }\n \
          {{/if}}\
        {{/each}}\
+       {{#if mfaLightTheme}}\
+        #okta-sign-in.auth-container .mfa-verify {\n \
+          width: 100%;\n \
+        }\n \
+        #okta-sign-in .o-form .input-fix.o-form-input-name-answer {\n \
+          margin-bottom: 5px;\n \
+        }\n \
+       {{/if}}\
       ');
 
   constructor() { }

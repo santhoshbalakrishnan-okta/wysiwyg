@@ -433,6 +433,7 @@ export default class TemplateService {
   };
 
   trendy = {
+    mfaLightTheme: {},
     authContainer: {
       display: "flex",
       height: null,
