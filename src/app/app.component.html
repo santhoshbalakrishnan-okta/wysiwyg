@@ -43,7 +43,7 @@
               <li class="list-group-item">
                   <div class="form-group">
                     <label for="text" class="mb-2">Logo</label>
-                    <input type="text" class="form-control" id="text" placeholder="URL" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
+                    <input type="text" class="form-control" id="text" placeholder="URL" [(ngModel)]="logo" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
                   </div>
               </li>
               <li class="list-group-item">

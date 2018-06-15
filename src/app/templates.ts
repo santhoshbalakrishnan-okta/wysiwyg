@@ -340,8 +340,8 @@ export default class TemplateService {
       display: null,
       height: null,
       width: null,
-      margin: "0",
-      padding: "0",
+      margin: null,
+      padding: null,
       "border-width": null,
       "border-color": null,
       background: null,
@@ -665,7 +665,7 @@ export default class TemplateService {
 
   getLogo(name): string {
     switch(name) {
-      case "dark": return "https://2kwimw12hawf1l4unuqq6ro2-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/mgmresorts-international-logo-2000x422.png";
+      //case "dark": return "https://2kwimw12hawf1l4unuqq6ro2-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/mgmresorts-international-logo-2000x422.png";
       default:  return null;
     } 
   } 

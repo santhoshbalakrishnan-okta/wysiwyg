@@ -120,6 +120,7 @@ export default class WidgetService {
        {{/if}}\
        {{#if username.border-radius}}\
         #okta-sign-in.auth-container .o-form-input-name-username { border-radius: {{username.border-radius}};}\n \
+        #okta-sign-in .o-form .o-form-input #okta-signin-username { border-radius: {{username.border-radius}};}\n \
        {{/if}}\
        {{#if username.border-color}}\
        	#okta-sign-in.auth-container .o-form-input-name-username { border-color: {{username.border-color}} !important;}\n \
