@@ -69,3 +69,9 @@ input[type=text]:hover, input[type=text]:active, input[type=text]:focus, input[t
 .color-picker .hex-text .box div {
     color: #fff !important;
 }
+
+textarea {
+    background: #282A35 !important;
+    color: #fff !important;
+    border: 0 !important;
+}

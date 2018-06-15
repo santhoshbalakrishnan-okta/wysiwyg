@@ -22,28 +22,45 @@
         <div class="col left-col">
             <button type="button" class="btn btn-primary btn-block mb-4" (click)="initSelectableElements()">
                 <i class="material-icons">center_focus_weak</i>
-                Select Mode
+                Select Element
             </button>
-            <h6>Components</h6>
-            <ul class="list-group mb-4 components">
-              <li class="list-group-item">Logo</li>
-              <li class="list-group-item">Button</li>
-              <li class="list-group-item">Help Link</li>
-            </ul>
             <h6>Features</h6>
             <ul class="list-group mb-4 components">
-                <li class="list-group-item">Router <ui-switch features.router></ui-switch></li>
-                <li class="list-group-item">Remember Me <ui-switch checked (change)="updateConfigAndRenderWidgetAgain('rememberMe', $event)"></ui-switch></li>
-                <li class="list-group-item">Auto Push <ui-switch></ui-switch></li>
-                <li class="list-group-item">SMS Recovery <ui-switch></ui-switch></li>
-                <li class="list-group-item">Call Recovery <ui-switch></ui-switch></li>
-                <li class="list-group-item">Windows Verify <ui-switch></ui-switch></li>
-                <li class="list-group-item">Self-service Unlock <ui-switch></ui-switch></li>
-                <li class="list-group-item">Multiple Optional Factor Enroll <ui-switch></ui-switch></li>
-                <li class="list-group-item">Hide Sign Out Link In MFA Page<ui-switch></ui-switch></li>
-                <li class="list-group-item">Registration <ui-switch (change)="updateConfigAndRenderWidgetAgain('registration', $event)"></ui-switch></li>
-                <li class="list-group-item">IDP Discovery <ui-switch></ui-switch></li>
-              </ul>
+              <li class="list-group-item">Router <ui-switch features.router></ui-switch></li>
+              <li class="list-group-item">Remember Me <ui-switch checked (change)="updateConfigAndRenderWidgetAgain('rememberMe', $event)"></ui-switch></li>
+              <li class="list-group-item">Auto Push <ui-switch></ui-switch></li>
+              <li class="list-group-item">SMS Recovery <ui-switch></ui-switch></li>
+              <li class="list-group-item">Call Recovery <ui-switch></ui-switch></li>
+              <li class="list-group-item">Windows Verify <ui-switch></ui-switch></li>
+              <li class="list-group-item">Self-service Unlock <ui-switch></ui-switch></li>
+              <li class="list-group-item">Multiple Optional Factor Enroll <ui-switch></ui-switch></li>
+              <li class="list-group-item">Hide Sign Out Link In MFA Page<ui-switch></ui-switch></li>
+              <li class="list-group-item">Registration <ui-switch (change)="updateConfigAndRenderWidgetAgain('registration', $event)"></ui-switch></li>
+              <li class="list-group-item">IDP Discovery <ui-switch></ui-switch></li>
+            </ul>
+            <h6>Components</h6>
+            <ul class="list-group mb-4 components">
+              <li class="list-group-item">
+                  <div class="form-group">
+                    <label for="text" class="mb-2">Logo</label>
+                    <input type="text" class="form-control" id="text" placeholder="URL" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
+                  </div>
+              </li>
+              <li class="list-group-item">
+                  <div class="form-group">
+                    <label for="text" class="mb-2">Button</label>
+                    <input type="text" class="form-control mb-2" id="text" placeholder="Text" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
+                    <textarea class="form-control" id="text" placeholder="Function" (keyup.enter)="updateConfigAndRenderWidgetAgain()"></textarea>
+                  </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label for="text" class="mb-2">Help Link</label>
+                  <input type="text" class="form-control mb-2" id="text" placeholder="Text" (keyup.enter)="updateConfigAndRenderWidgetAgain()">
+                  <textarea class="form-control" id="text" placeholder="Function" (keyup.enter)="updateConfigAndRenderWidgetAgain()"></textarea>
+                </div>
+              </li>
+            </ul>
         </div>
       <div class="col-6">
         <div id="okta-login-container" (mouseover)="hoverElements($event); $event.stopPropagation(); $event.preventDefault();" (click)="clickElements($event); $event.preventDefault();"></div>
@@ -131,7 +148,7 @@
       </div>
     </div>
   </div>
-</div>
+<!-- </div>
 
 <div class="modal-background" [hidden]="hideChooseTemplateModal && hideUrlModal">
 </div>
@@ -179,7 +196,4 @@
             </div>
         </div>
     </div>
-    <!-- <button type="button" class="btn btn-primary mb-4 modal-button modal-template-button" (click)="startEditing()">
-        Start Editing!
-    </button> -->
-  </div>
+  </div> -->
