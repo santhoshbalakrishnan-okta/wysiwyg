@@ -113,11 +113,11 @@ ui-switch {
 }
 
 .dashed {
-    border: 2px dashed red !important;
+    border: 2px dashed #e22866 !important;
 }
 
 .bordered {
-    border: 1px solid red !important;
+    border: 1px solid #e22866 !important;
 }
 
 .templates {
