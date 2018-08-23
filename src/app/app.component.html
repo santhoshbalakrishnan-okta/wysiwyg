@@ -87,7 +87,7 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label for="height" class="text-muted">Height</label>
-              <input type="text" class="form-control" id="height" placeholder="px or %" [(ngModel)]="cssConfig.height" 
+              <input type="text" class="form-control" id="height" placeholder="px or %" [(ngModel)]="cssConfig.height"
    (keyup.enter)="getStyles()">
             </div>
             <div class="form-group col-md-4">
@@ -150,7 +150,7 @@
   </div>
 </div>
 
-<div class="modal-background" [hidden]="hideChooseTemplateModal && hideUrlModal">
+<div class="modal-background" [hidden]="hideChooseTemplateModal && hideUrlModal && hideCodeEditorContainer">
 </div>
 
 <div class="modal-url" [hidden]="hideUrlModal">
@@ -182,18 +182,39 @@
               <h5 class="card-title">Dark Theme</h5>
             </div>
           </div>
-          <div class="card" (click)="startEditing('horizontal')">
-            <img class="card-img-top mt-3" src="../assets/img/horizontal.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Horizontal</h5>
-            </div>
-          </div>
-          <div class="card" (click)="startEditing('trendy')">
-              <img class="card-img-top" src="../assets/img/style.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Trendy</h5>
-              </div>
-            </div>
-        </div>
+          <!--<div class="card" (click)="startEditing('horizontal')">-->
+            <!--<img class="card-img-top mt-3" src="../assets/img/horizontal.png" alt="Card image cap">-->
+            <!--<div class="card-body">-->
+              <!--<h5 class="card-title">Horizontal</h5>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card" (click)="startEditing('trendy')">-->
+              <!--<img class="card-img-top" src="../assets/img/style.png" alt="Card image cap">-->
+              <!--<div class="card-body">-->
+                <!--<h5 class="card-title">Trendy</h5>-->
+              <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
   </div>
+</div>
+
+<div class="code-editor-container" [hidden]="hideCodeEditorContainer">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="editor-container">
+        <ngx-codemirror
+          [options]="{
+            lineNumbers: true,
+            theme: 'monokai',
+            mode: 'htmlmixed'
+          }"
+          class="code-editor"
+          [(ngModel)]="code"></ngx-codemirror >
+      </div>
+    </div>
+    <div class="preview-container col-md-4">
+      <div id="okta-login-container-preview" ></div>
+    </div>
+  </div>
+</div>

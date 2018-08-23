@@ -6,7 +6,7 @@ import Handlebars from 'handlebars/dist/handlebars';
 })
 export default class WidgetService {
 
-	template = Handlebars.compile('\
+  template = Handlebars.compile('\
        {{#each authContainer}}\
          {{#if this}}\
            #okta-sign-in.auth-container.main-container[data-se=auth-container] { {{@key}}: {{this}}; }\n \
@@ -235,59 +235,35 @@ export default class WidgetService {
        {{/if}}\
       ');
 
-  constructor() { }
+  constructor() {
+  }
 
   getCss(cssTranslation): string {
     return this.template(cssTranslation);
-	}
-	
-  downloadPage(features, cssConfig, i18n, orgUrl, logo): void {
-  	var customCss:string = this.getCss(cssConfig).trim();
-		  
-    var config :any= {
-    	baseUrl: orgUrl,
-    	i18n: {
-    		en : {
-    			'primaryauth.title': i18n.signInLabel,
+  }
+
+  downloadPage(features, cssConfig, i18n, orgUrl, logo): string {
+    const customCss: string = this.getCss(cssConfig).trim();
+
+    const config: any = {
+      baseUrl: orgUrl,
+      i18n: {
+        en: {
+          'primaryauth.title': i18n.signInLabel,
           'primaryauth.username.placeholder': i18n.username
         }
-    	},
-    	features: features
+      },
+      features: features
     };
     if (logo) {
-    	config.logo = logo;
+      config.logo = logo;
     }
-    var widgetConfig = JSON.stringify(config, null, 2);
+    const widgetConfig = JSON.stringify(config, null, 2);
 
+    const jsFile = `var orgUrl = "${orgUrl}";
 
-		var indexFile = `
-		  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
-		<html>
-		<head>
-		    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		    <title>Sign in</title>
-		    
-		    <script type="text/javascript" src="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/js/okta-sign-in.min.js"></script>
-		    
-		    <link rel="stylesheet" type="text/css" href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-sign-in.min.css">
-		    <link
-		  href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-theme.css"
-		  type="text/css"
-		  rel="stylesheet"/>
-		    <style>
-		      ${customCss}
-		    </style>
-		</head>
-		<body>
-				<div class="login-bg-image" style="background-image: {{bgImageUrl}}"></div>
-		    <div id="okta-login-container"></div>
-		    <script type="text/javascript">
-			  var orgUrl = "${orgUrl}";
-		        
-				// config
-		    var config = ${widgetConfig};
+        // config
+        var config = ${widgetConfig};
 
         // render widget
         var oktaSignIn = new OktaSignIn(config);
@@ -297,31 +273,61 @@ export default class WidgetService {
                 res.session.setCookieAndRedirect(orgUrl);
             },
             function(error) {
-		        // failure fn
+              // failure fn
                 console.log(error.message, error);
             }
-        );
-		    </script>
-		</body>
-		</html>
-		`;
-		    
+        );`;
 
-		function download(filename, text) {
-	    var pom = document.createElement('a');
-	    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-	    pom.setAttribute('download', filename);
 
-	    if (document.createEvent) {
-	        var event = document.createEvent('MouseEvents');
-	        event.initEvent('click', true, true);
-	        pom.dispatchEvent(event);
-	    }
-	    else {
-	        pom.click();
-	    }
-		}
+    const indexFile = `
+      <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		download('loginPage.html', indexFile);
-	}
+        <title>Sign in</title>
+
+        <script type="text/javascript" 
+          src="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/js/okta-sign-in.min.js"></script>
+
+        <link rel="stylesheet" 
+          type="text/css" 
+          href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-sign-in.min.css">
+        <link
+          href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-theme.css"
+          type="text/css"
+          rel="stylesheet"/>
+        <style>
+          ${customCss}
+        </style>
+    </head>
+    <body>
+        <div class="login-bg-image" style="background-image: {{bgImageUrl}}"></div>
+        <div id="okta-login-container"></div>
+        <script type="text/javascript">
+          ${jsFile}
+        </script>
+    </body>
+    </html>
+    `;
+
+
+    function download(filename, text) {
+      const pom = document.createElement('a');
+      pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      pom.setAttribute('download', filename);
+
+      if (document.createEvent) {
+        const event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+      } else {
+        pom.click();
+      }
+    }
+
+    //download('loginPage.html', indexFile);
+    return indexFile;
+  }
 }

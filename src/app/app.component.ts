@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import WidgetService from './app.service';
 import TemplateService from './templates';
-import { CssConfig }    from './css-config';
+import { CssConfig } from './css-config';
 import $ from 'jquery';
 
 
@@ -17,10 +17,12 @@ export class AppComponent implements OnInit {
   title = 'app';
   widget: OktaSignIn;
   templateName: string;
+  code: string;
   fontColor: any = 'default';
   bgColor: any = 'default';
   hideUrlModal: boolean = false;
   hideChooseTemplateModal: boolean = true;
+  hideCodeEditorContainer: boolean = true;
   config  = {};
   orgUrl = 'https://atko.oktapreview.com';
   logo: string = null;
@@ -58,7 +60,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  createAndRenderNewWideget() {
+  createAndRenderNewWideget(url) {
     if (this.widget) {
       this.widget.remove();
     }
@@ -80,7 +82,7 @@ export class AppComponent implements OnInit {
     this.widget = new OktaSignIn(config);
 
     // render widget
-    this.widget.renderEl({ el: '#okta-login-container' },
+    this.widget.renderEl({ el: url || '#okta-login-container' },
       function(res) {
       },
       function(error) {
@@ -92,9 +94,9 @@ export class AppComponent implements OnInit {
 
   updateConfigAndRenderWidgetAgain(feature, value) {
     if (feature) {
-      this.features[feature] = value;  
+      this.features[feature] = value;
     }
-    this.createAndRenderNewWideget();
+    this.createAndRenderNewWideget(null);
   }
 
   initSelectableElements() {
@@ -141,7 +143,7 @@ export class AppComponent implements OnInit {
     }
 
     this.currentHovered = event.target;
-    
+
     if (this.selectableElements.indexOf($(this.currentHovered)[0]) >= 0) {
       this.control = false;
     } else {
@@ -183,7 +185,10 @@ export class AppComponent implements OnInit {
   }
 
   downloadCode() {
-    this.widgetService.downloadPage(this.features, this.config, this.i18n, this.orgUrl, this.logo);
+    this.code = this.widgetService.downloadPage(this.features, this.config, this.i18n, this.orgUrl, this.logo);
+    this.hideCodeEditorContainer = false;
+
+    this.createAndRenderNewWideget('#okta-login-container-preview');
   }
 
   showChooseTemplateModal() {

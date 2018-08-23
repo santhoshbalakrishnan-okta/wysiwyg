@@ -4,6 +4,7 @@ import { UiSwitchModule } from 'ngx-ui-switch';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppComponent } from './app.component';
       defaultBgColor: '#E02D67',
       defaultBoColor: 'transparent'
     }),
-    ColorPickerModule
+    ColorPickerModule,
+    CodemirrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
